@@ -38,3 +38,12 @@ Thumbs.db
 build/
 dist/
 
+# Framework metadata / loops
+.loops/
+.foundation/
+.prd/
+.rfc/
+.specs/
+.templates/
+
+
