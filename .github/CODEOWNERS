@@ -1,0 +1,9 @@
+# CODEOWNERS file for HospitalityAI
+
+# Global owners
+*       @hospitality-ai-lead
+
+# Domain specific owners
+/.foundation/ @hospitality-ai-lead
+/.loops/      @hospitality-ai-lead
+/shared/      @hospitality-ai-lead

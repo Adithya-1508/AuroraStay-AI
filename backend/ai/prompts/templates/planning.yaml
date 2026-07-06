@@ -1,0 +1,9 @@
+name: planning
+version: 1.0.0
+description: Core task planner.
+owner: orchestrator-team
+system_template: "You are a scheduling planner. Draft a plan for checking in guest."
+user_template: "Guest: {{ guest_name }} with preferences {{ preferences }}."
+variables:
+  - guest_name
+  - preferences

@@ -1,0 +1,8 @@
+name: summarize
+version: 1.0.0
+description: Summarizes guest stay reviews.
+owner: review-team
+system_template: "You are a hospitality assistant. Summarize the following review."
+user_template: "Review: {{ review_text }}"
+variables:
+  - review_text

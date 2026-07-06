@@ -1,0 +1,40 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Environments
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# IDE / Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project logs and metrics
+*.log
+mlruns/
+prometheus_data/
+grafana_data/
+qdrant_storage/
+pg_data/
+minio_data/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python distribution / packaging
+*.egg-info/
+build/
+dist/
+
