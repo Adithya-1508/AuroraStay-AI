@@ -48,6 +48,7 @@ class ReservationCheckedIn(ReservationBaseEvent):
 
 class ReservationCheckedOut(ReservationBaseEvent):
     reservation_id: UUID
+    room_id: UUID
 
 
 class ReservationCompleted(ReservationBaseEvent):

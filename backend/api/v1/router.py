@@ -4,12 +4,20 @@ from typing import Any
 from fastapi import APIRouter, Depends, Request
 
 from backend.auth.permissions import get_current_user_context
+from business.guest.api.routes import router as guests_router
+from business.ops.api.routes import router as ops_router
 from business.reservation.api.routes import router as reservations_router
 
 router = APIRouter()
 
 router.include_router(
     reservations_router, prefix="/reservations", tags=["Reservations"]
+)
+router.include_router(
+    guests_router, tags=["Guests"]
+)
+router.include_router(
+    ops_router, tags=["Operations"]
 )
 
 

@@ -2,6 +2,8 @@ import structlog
 
 from business.reservation.events.schemas import ReservationBaseEvent
 
+from collections.abc import Awaitable, Callable
+
 logger = structlog.get_logger()
 
 
@@ -10,6 +12,13 @@ class EventPublisher:
 
     def __init__(self) -> None:
         self.published_events: list[ReservationBaseEvent] = []
+        self.subscribers: list[Callable[[ReservationBaseEvent], Awaitable[None]]] = []
+
+    def subscribe(
+        self, callback: Callable[[ReservationBaseEvent], Awaitable[None]]
+    ) -> None:
+        """Registers a callback handler for published events."""
+        self.subscribers.append(callback)
 
     async def publish(self, event: ReservationBaseEvent) -> None:
         """Dispatches the event payload to log records and registers in list."""
@@ -21,6 +30,15 @@ class EventPublisher:
             timestamp=event.timestamp.isoformat(),
             payload=event.model_dump(),
         )
+        for subscriber in self.subscribers:
+            try:
+                await subscriber(event)
+            except Exception as e:
+                logger.error(
+                    "Error in reservation event subscriber",
+                    error=str(e),
+                    event_type=event.__class__.__name__,
+                )
 
 
 # Global publisher instance

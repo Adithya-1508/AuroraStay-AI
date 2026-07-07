@@ -390,8 +390,11 @@ class ReservationService:
         )
 
         # 4. Dispatch Event
-        event = ReservationCheckedOut(reservation_id=reservation.id)
-        await domain_event_publisher.publish(event)
+        if assigned_room_id:
+            event = ReservationCheckedOut(
+                reservation_id=reservation.id, room_id=assigned_room_id
+            )
+            await domain_event_publisher.publish(event)
 
         # 5. Notify Guest
         guest = await uow.guests.get(str(reservation.guest_id))

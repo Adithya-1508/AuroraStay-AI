@@ -4,11 +4,14 @@ from typing import Any
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from backend.database.session import async_session_factory
+from backend.models.employee import Employee
 from backend.models.reservation import ReservationHistory
 from backend.repositories.postgres.base import PostgresRepository
 from backend.repositories.postgres.forecast import ForecastRepository
 from backend.repositories.postgres.guest import GuestRepository
+from backend.repositories.postgres.housekeeping import HousekeepingRepository
 from backend.repositories.postgres.knowledge import KnowledgeRepository
+from backend.repositories.postgres.maintenance import MaintenanceRepository
 from backend.repositories.postgres.recommendation import RecommendationRepository
 from backend.repositories.postgres.reservation import ReservationRepository
 from backend.repositories.postgres.review import ReviewRepository
@@ -31,6 +34,9 @@ class AbstractUnitOfWork(ABC):
     rooms: RoomRepository
     room_categories: RoomCategoryRepository
     reservation_histories: PostgresRepository[ReservationHistory]
+    housekeeping: HousekeepingRepository
+    maintenance: MaintenanceRepository
+    employees: PostgresRepository[Employee]
 
     async def __aenter__(self) -> "AbstractUnitOfWork":
         return self
@@ -72,6 +78,9 @@ class PostgresUnitOfWork(AbstractUnitOfWork):
         self.reservation_histories = PostgresRepository(
             self.session, ReservationHistory
         )
+        self.housekeeping = HousekeepingRepository(self.session)
+        self.maintenance = MaintenanceRepository(self.session)
+        self.employees = PostgresRepository(self.session, Employee)
         return self
 
     async def __aexit__(self, exc_type: Any, exc_val: Any, exc_tb: Any) -> None:

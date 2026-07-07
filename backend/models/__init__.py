@@ -4,7 +4,9 @@ from backend.models.employee import Employee
 from backend.models.etl import ETLExecution
 from backend.models.forecast import Forecast
 from backend.models.guest import Guest
+from backend.models.housekeeping import HousekeepingTask
 from backend.models.knowledge_document import KnowledgeDocument
+from backend.models.maintenance import MaintenanceRequest
 from backend.models.notification import Notification
 from backend.models.recommendation import Recommendation
 from backend.models.reservation import Reservation, ReservationHistory
@@ -30,4 +32,6 @@ __all__ = [
     "SpaBooking",
     "Notification",
     "ETLExecution",
+    "HousekeepingTask",
+    "MaintenanceRequest",
 ]
