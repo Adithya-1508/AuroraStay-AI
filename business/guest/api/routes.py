@@ -202,7 +202,7 @@ async def get_guest_recommendations(
             {
                 "id": str(r.id),
                 "item_type": r.item_type,
-                "score": float(r.score),
+                "score": r.score,
                 "is_accepted": r.is_accepted,
                 "generated_at": r.generated_at.isoformat(),
             }
