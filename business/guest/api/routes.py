@@ -1,8 +1,9 @@
 from typing import Any
 from uuid import UUID
-from sqlalchemy import select
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel, Field
+from sqlalchemy import select
 
 from backend.models.conversation import Conversation
 from backend.repositories.unit_of_work import PostgresUnitOfWork
