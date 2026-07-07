@@ -13,12 +13,8 @@ router = APIRouter()
 router.include_router(
     reservations_router, prefix="/reservations", tags=["Reservations"]
 )
-router.include_router(
-    guests_router, tags=["Guests"]
-)
-router.include_router(
-    ops_router, tags=["Operations"]
-)
+router.include_router(guests_router, tags=["Guests"])
+router.include_router(ops_router, tags=["Operations"])
 
 
 @router.get("/ping")

@@ -1,8 +1,8 @@
+from collections.abc import Awaitable, Callable
+
 import structlog
 
 from business.reservation.events.schemas import ReservationBaseEvent
-
-from collections.abc import Awaitable, Callable
 
 logger = structlog.get_logger()
 
