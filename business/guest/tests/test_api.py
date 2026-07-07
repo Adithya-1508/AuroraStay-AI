@@ -259,7 +259,9 @@ async def test_routes_directly(db_session: AsyncSession) -> None:
 
     # concierge_chat non-existent guest
     chat_req_fake = ConciergeChatRequest(
-        conversation_id=uuid.uuid4(), guest_id=uuid.uuid4(), message="I want a queen bed"
+        conversation_id=uuid.uuid4(),
+        guest_id=uuid.uuid4(),
+        message="I want a queen bed",
     )
     with pytest.raises(HTTPException) as exc:
         await concierge_chat(chat_req_fake, uow)
