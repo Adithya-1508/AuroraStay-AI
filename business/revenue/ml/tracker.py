@@ -18,9 +18,7 @@ class MLflowTracker:
 
     def __init__(self, tracking_uri: str | None = None) -> None:
         self.tracking_uri: str = (
-            tracking_uri
-            or os.getenv("MLFLOW_TRACKING_URI")
-            or "sqlite:///mlflow.db"
+            tracking_uri or os.getenv("MLFLOW_TRACKING_URI") or "sqlite:///mlflow.db"
         )
         self.active_run: Any = None
 
