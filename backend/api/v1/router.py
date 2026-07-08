@@ -7,6 +7,7 @@ from backend.auth.permissions import get_current_user_context
 from business.guest.api.routes import router as guests_router
 from business.ops.api.routes import router as ops_router
 from business.reservation.api.routes import router as reservations_router
+from business.revenue.api.routes import router as revenue_router
 
 router = APIRouter()
 
@@ -15,6 +16,7 @@ router.include_router(
 )
 router.include_router(guests_router, tags=["Guests"])
 router.include_router(ops_router, tags=["Operations"])
+router.include_router(revenue_router, tags=["Revenue"])
 
 
 @router.get("/ping")
