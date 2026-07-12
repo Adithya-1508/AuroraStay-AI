@@ -9,6 +9,7 @@ from business.ops.api.routes import router as ops_router
 from business.reservation.api.routes import router as reservations_router
 from business.revenue.api.routes import router as revenue_router
 from dashboard.api.routes import router as dashboard_router
+from observability.api.routes import router as observability_router
 
 router = APIRouter()
 
@@ -19,6 +20,7 @@ router.include_router(guests_router, tags=["Guests"])
 router.include_router(ops_router, tags=["Operations"])
 router.include_router(revenue_router, tags=["Revenue"])
 router.include_router(dashboard_router, tags=["Dashboard"])
+router.include_router(observability_router, tags=["Observability"])
 
 
 @router.get("/ping")
