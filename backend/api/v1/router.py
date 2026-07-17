@@ -9,9 +9,9 @@ from business.ops.api.routes import router as ops_router
 from business.reservation.api.routes import router as reservations_router
 from business.revenue.api.routes import router as revenue_router
 from dashboard.api.routes import router as dashboard_router
+from deployment.api.routes import router as deployment_router
 from observability.api.routes import router as observability_router
 from security.api.routes import router as security_router
-from deployment.api.routes import router as deployment_router
 
 router = APIRouter()
 
