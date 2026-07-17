@@ -39,8 +39,8 @@ async def test_reservation_full_lifecycle(db_session: AsyncSession) -> None:
     res_service = ReservationService()
 
     # --- Step A: Create Reservation ---
-    check_in = date.today() + timedelta(days=5)
-    check_out = date.today() + timedelta(days=10)
+    check_in = date(2026, 8, 1)
+    check_out = date(2026, 8, 6)
 
     async with uow:
         res = await res_service.create_reservation(
@@ -67,8 +67,8 @@ async def test_reservation_full_lifecycle(db_session: AsyncSession) -> None:
         assert histories[0].new_status == "Confirmed"
 
     # --- Step B: Modify Reservation ---
-    new_in = date.today() + timedelta(days=6)
-    new_out = date.today() + timedelta(days=9)  # 3 nights
+    new_in = date(2026, 8, 2)
+    new_out = date(2026, 8, 5)  # 3 nights
 
     async with uow:
         res_mod = await res_service.modify_reservation(
