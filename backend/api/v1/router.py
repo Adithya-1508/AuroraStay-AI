@@ -11,6 +11,7 @@ from business.revenue.api.routes import router as revenue_router
 from dashboard.api.routes import router as dashboard_router
 from observability.api.routes import router as observability_router
 from security.api.routes import router as security_router
+from deployment.api.routes import router as deployment_router
 
 router = APIRouter()
 
@@ -23,6 +24,7 @@ router.include_router(revenue_router, tags=["Revenue"])
 router.include_router(dashboard_router, tags=["Dashboard"])
 router.include_router(observability_router, tags=["Observability"])
 router.include_router(security_router, tags=["Security"])
+router.include_router(deployment_router)
 
 
 @router.get("/ping")
